@@ -11,20 +11,21 @@ function getDataFromYoutube(searchTerm,callback) {
       }
       $.getJSON(Youtube_Search_URL, query, callback);
 }
-function renderResults(result) {
+function renderResults(results) {
+    //renderResults return title and thumbnail, scoping problems
     return `<div>
                 <h2>
-                <a class="js-results-name" href="http://www.youtube.com/watch?v=" target= "_blank">${result}</a></h2>
-                <p><span class="js-search-results">${result}
+                <a class="js-results-name" href="http://www.youtube.com/watch?v=" target= "_blank"></a>${results.snippet.title}</h2>
+                <p><span class="js-search-result">
                 </span>
                 </p>
-                <img src=${results.items.snippet.thumbnails.medium.url}">
+                <img src="${results.snippet.thumbnails.medium.url}">
                 </div>`;
-                //need to insert img scr= thumbnail
+                //need to insert img scr= thumbnail, used right-click & "copy path"
 }
 function displayYoutubeSearchData(data){
     //set const results to Data to jQuery .map with values item, index fat arrow function, renderResult with value (item) ???
-    const results = data.items.map((item, index) => renderResult(item));
+    const results = data.items.map((item, index) => renderResults(item));
     //send those results into the DOM with .html into the div w/ class = js-search-results.
     // items.snippet.thumbnails.medium.url;
     $('.js-search-results').html(results);
