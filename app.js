@@ -12,10 +12,10 @@ function getDataFromYoutube(searchTerm,callback) {
       $.getJSON(Youtube_Search_URL, query, callback);
 }
 function renderResults(results) {
-    //renderResults return title and thumbnail, scoping problems
+    //renderResults return title with link and thumbnail
     return `<div>
                 <h2>
-                <a class="js-results-name" href="http://www.youtube.com/watch?v=" target= "_blank"></a>${results.snippet.title}</h2>
+                <a class="js-results-name" href="http://www.youtube.com/watch?v=${results.id.videoId}" target= "_blank">${results.snippet.title}</h2></a>
                 <p><span class="js-search-result">
                 </span>
                 </p>
