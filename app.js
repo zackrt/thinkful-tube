@@ -53,5 +53,5 @@ $(watchSubmit);
 //Should be given textual feedback when results appear, including the number of results.
 function resultsCount(numResults){
     console.log(numResults);
-    $("#results-count").html(numResults);
+    $("#results-count").html(`Displaying ${numResults} video links:`);
 }
