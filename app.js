@@ -13,9 +13,10 @@ function getDataFromYoutube(searchTerm,callback) {
 }
 function renderResults(results) {
     //renderResults return title with link and thumbnail
+    resultsCount();
     return `<div>
-                <h2>
-                <a class="js-results-name" href="http://www.youtube.com/watch?v=${results.id.videoId}" target= "_blank">${results.snippet.title}</h2></a>
+                <h3>
+                <a class="js-results-name" href="http://www.youtube.com/watch?v=${results.id.videoId}" target= "_blank">${results.snippet.title}</h3></a>
                 <p><span class="js-search-result">
                 </span>
                 </p>
@@ -32,7 +33,10 @@ function displayYoutubeSearchData(data){
 }
 function watchSubmit() {
     $('.js-search-form').submit(event => {
+    
     event.preventDefault();
+    //changing aria-live property hidden to false in results h3
+    $(".js-search-results").prop('hidden', false);
     //get that element, the object
     const queryTarget = $(event.currentTarget).find('.js-query');
     //sets const query to a value
@@ -44,3 +48,9 @@ function watchSubmit() {
     });
 }
 $(watchSubmit);
+//Should be given textual feedback when results appear, including the number of results.
+function resultsCount(){
+    var numResults = query.maxResults;
+    numResults = 0;
+    $("#results-count").html(numResults);
+}
