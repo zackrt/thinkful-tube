@@ -25,7 +25,7 @@ function renderResults(results) {
     //need to insert img scr= thumbnail, used right-click & "copy path"
 }
 function displayYoutubeSearchData(data){
-    
+    //invokes resultsCount with the parameters data.items.length or the number of items in the array of items, found in network on chrome
     resultsCount(data.items.length);
     //set const results to Data to jQuery .map with values item, index fat arrow function, renderResult with value (item) ???
     const results = data.items.map((item, index) => renderResults(item));
